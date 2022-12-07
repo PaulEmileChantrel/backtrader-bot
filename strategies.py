@@ -32,7 +32,7 @@ class TestStrategy(bt.Strategy):
         if self.order:
             return
         if not self.position:
-            if self.dataclose[0] < self.dataclose[-1] and self.dataclose[-1] < self.dataclose[-2] and self.dataclose[-2] < self.dataclose[-3]:
+            if self.dataclose[0] < self.dataclose[-1] and self.dataclose[-1] < self.dataclose[-2] :
                 # Three day down in a row
 
                 # BUY, BUY, BUY!!! (with all possible default parameters)
@@ -47,7 +47,7 @@ class TestStrategy(bt.Strategy):
                 self.log('SELL CREATE, %.2f' % sell_price)
                 self.order = self.sell(price = sell_price)
 
-            if len(self)>= self.bar_executed+10:
+            if len(self)>= self.bar_executed+5:
 
                 # SELL
                 self.log('SELL CREATE, %.2f' % self.dataclose[0])
